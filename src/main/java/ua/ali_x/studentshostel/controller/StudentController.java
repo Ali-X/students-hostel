@@ -7,7 +7,7 @@ import ua.ali_x.studentshostel.service.StudentService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/student")
 public class StudentController {
@@ -16,7 +16,7 @@ public class StudentController {
     private StudentService studentService;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Student> getAll(){
+    public List<Student> getAll() {
         return studentService.getAllSortedBySurname();
     }
 

@@ -1,5 +1,9 @@
 package ua.ali_x.studentshostel.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -36,8 +40,9 @@ public class Student {
     private Speciality speciality;
     @Column(name = "admissyear")
     private Integer admisionYear;
-    @Column(name = "room")
-    private String room;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roomnum")
+    private Room room;
     @Column(name = "notes")
     private String notes;
 
@@ -121,14 +126,6 @@ public class Student {
         this.admisionYear = admisionYear;
     }
 
-    public String getRoom() {
-        return room;
-    }
-
-    public void setRoom(String room) {
-        this.room = room;
-    }
-
     public String getNotes() {
         return notes;
     }
@@ -137,4 +134,11 @@ public class Student {
         this.notes = notes;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }
