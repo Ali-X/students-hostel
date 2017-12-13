@@ -3,6 +3,8 @@ package ua.ali_x.studentshostel.model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import ua.ali_x.studentshostel.serializer.StudentSerializer;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -11,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Student")
+@JsonSerialize(using = StudentSerializer.class)
 public class Student {
 
     @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)

@@ -2,13 +2,16 @@ package ua.ali_x.studentshostel.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Formula;
+import ua.ali_x.studentshostel.serializer.RoomSerializer;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Room")
+@JsonSerialize(using = RoomSerializer.class)
 public class Room {
 
     @Id
